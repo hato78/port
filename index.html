@@ -1,0 +1,551 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luminous-lightbox@2.4.0/dist/luminous-basic.min.css">
+</head>
+<style>
+.element {
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%; /* 要素を円形にする */
+}
+
+.element::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient( rgba(29, 78, 216, 0.15), transparent 80%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: background-color 0.3s ease;
+  border-radius: 50%;
+}
+
+
+
+
+    body {
+        background-color: #101D3F;
+        /* 紺色の背景 */
+        background: linear-gradient(to right, #0a192f, #112240);
+        /* 左から右への濃い紺色のグラデーション */
+        color: white;
+        font-family: 'Signika Negative', sans-serif;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+    }
+
+    h1 {
+        font-size: 38px;
+        letter-spacing: 3px;
+        margin-bottom: 70px;
+    }
+
+    p {
+        margin: 0;
+        color: #E2E8F0;
+    }
+
+    .wrapper {
+        display: flex;
+        max-width: 80%;
+        margin: auto;
+        height: 100%;
+    }
+
+    .left-wrapper {
+        width: 50%;
+        margin-top: 50px;
+        font-family: 'Zen Kaku Gothic New', sans-serif;
+    }
+
+    #about,
+    #cording,
+    #design {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        font-weight: 300;
+        letter-spacing: 4px;
+        cursor: pointer;
+        transition: letter-spacing 0.3s;
+        font-family: 'Signika Negative', sans-serif;
+    }
+
+    #about:hover,
+    #cording:hover,
+    #design:hover {
+        letter-spacing: 10px;
+    }
+
+    #about:hover .contents-border,
+    #cording:hover .contents-border,
+    #design:hover .contents-border {
+        padding-right: 30px;
+    }
+
+    .contents-border {
+        height: 1px;
+        background: white;
+        padding-right: 20px;
+        margin-right: 10px;
+        transition: padding-right 0.1s;
+    }
+
+    .language ul {
+        display: flex;
+        margin-top: 100px;
+        padding: 0;
+    }
+
+    .language li {
+        font-size: 24px;
+        margin-right: 16px;
+        list-style: none;
+    }
+
+    .about-contents {
+        font-size: 13px;
+    }
+
+    .right-wrapper {
+        width: 50%;
+        padding-top: 100px;
+        overflow-y: auto;
+        /* 縦スクロールを有効にする */
+        scrollbar-width: none;
+        /* Firefoxでのスクロールバー非表示 */
+        height: auto;
+        /* コンテナの高さに合わせる */
+        scroll-behavior: smooth;
+    }
+
+    .right-wrapper::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Operaでのスクロールバー非表示 */
+    }
+
+    .works {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 30px;
+        padding-top: 28px;
+        padding-bottom: 30px;
+        transition: 0.3s;
+    }
+
+    .works:hover {
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        border-radius: 7px;
+    }
+
+    .works-title {
+        font-weight: 500;
+    }
+
+    .works-date {
+        font-size: 14px;
+        color: #ffffffa1;
+        transform: rotate(270deg);
+        text-decoration: overline;
+        margin-top: 45px;
+    }
+
+    .works-text {
+        word-wrap: break-word;
+        /* 古いブラウザ対応 */
+        overflow-wrap: break-word;
+        /* 標準的な方法 */
+        max-width: 300px;
+        color: #ffffffa1;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        font-size: 12px;
+    }
+
+    .works-image {
+        width: 170px;
+        /* コンテナの幅 */
+        min-width: 170px;
+        height: 100px;
+        /* コンテナの高さ */
+        overflow: hidden;
+        /* はみ出した部分を非表示にする */
+        border-radius: 5px;
+        margin-right: 20px;
+    }
+
+    .works-image img {
+        width: 100%;
+        /* コンテナの幅に合わせる */
+        height: 100%;
+        /* コンテナの高さに合わせる */
+        object-fit: cover;
+        /* 画像をコンテナに合わせてトリミング */
+    }
+
+    .works-language {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .works-language p {
+        color: #5EEAD4;
+        font-size: 12px;
+        background: rgb(17, 42, 59);
+        padding: 2px 10px;
+        font-weight: 500;
+        margin-right: 10px;
+        margin-bottom: 7px;
+        text-align: center;
+        border-radius: 20px;
+    }
+
+    .large-text {
+        font-size: 24px;
+        /* 文字サイズを大きくするスタイル */
+    }
+
+    .fa-file-pdf {
+        color: white;
+    }
+
+    #about-top {
+        letter-spacing: 1px;
+        line-height: 28px;
+    }
+
+    #about-top,
+    #cording-top,
+    #design-top {
+        scroll-margin-top: 20px;
+    }
+
+    .lum-lightbox-inner img {
+        max-width: 70% !important;
+    }
+
+    footer {
+        text-align: left;
+        margin: 30px auto 30px auto;
+        font-size: 11px;
+    }
+
+    .tumblr {
+        margin: 0 4px -3px 1px;
+        border-radius: 3px;
+    }
+
+    @media screen and (max-width:1000px) {
+        .wrapper {
+            flex-direction: column;
+            height: auto;
+        }
+
+        .right-wrapper {
+            width: 100%;
+        }
+
+        .works-image {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 170px;
+        }
+
+        .works {
+            flex-direction: column;
+        }
+
+        .works-date {
+            display: contents;
+        }
+
+        .lum-gallery-button {
+            display: none;
+        }
+
+    }
+</style>
+
+<body>
+    <div class="element" id="hover-area"></div>
+    <div class="wrapper">
+        <div class="left-wrapper" id="left">
+            <h1>Yuichiro Hato</h1>
+            <div class="contents">
+                <a href="#about-top">
+                    <div id="about">
+                        <div class="contents-border"></div>
+                        <div class="contents-text">ABOUT</div>
+                    </div>
+                </a>
+                <a href="#cording-top">
+                    <div id="cording">
+                        <div class="contents-border"></div>
+                        <div class="contents-text">CORDiNG</div>
+                    </div>
+                </a>
+                <a href="#design-top">
+                    <div id="design">
+                        <div class="contents-border"></div>
+                        <div class="contents-text">DESiGN</div>
+                    </div>
+                </a>
+            </div>
+            <div class="language">
+                <ul>
+                    <li><i class="fa-brands fa-html5"></i></li>
+                    <li><i class="fa-brands fa-sass"></i></li>
+                    <li><i class="fa-brands fa-js"></i></li>
+                    <li><i class="fa-brands fa-vuejs"></i></li>
+                    <li><i class="fa-brands fa-php"></i></li>
+                    <li><i class="fa-brands fa-wordpress"></i></li>
+                    <li><i class="fa-brands fa-figma"></i></li>
+
+                </ul>
+            </div>
+            <footer>
+                © 2024 Yuichiro Hato
+            </footer>
+        </div>
+        <div class="right-wrapper" id="right">
+            <div class="about-contents" id="about-top">
+                2014年、Tumblr<img class="tumblr" width="20"
+                    src="https://64.media.tumblr.com/c76fd8783b564909bc5d24e4d160e9a5/d1c457b1ce3a4e79-f9/s1280x1920/3a4a4ce662723623b75ea03587f64fbd5aea270d.jpg">のオリジナルテーマを自分で作りたいなとうっすら思っていたことがWebの世界に入るきっかけでした。現在は主にフロントエンドの仕事をしています。最近の関心はデザインとエンジニアリングの両方の観点から、見た目が良く使いやすいサービスを作ることです。
+            </div>
+            <a href="https://www.hosokawakensetsu.co.jp/" target="_blank">
+                <div class="works" id="cording-top">
+                    <div class="works-date">2023.12</div>
+                    <div class="works-image"><img
+                            src="https://www.hosokawakensetsu.co.jp/wp-content/themes/mytheme/img/slider/mode3_w2739_h1449-337911ad82cb9bade9d419c4f73a6fa1.webp">
+                    </div>
+                    <div class="works-sentence">
+                        <span class="works-title">Web page <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <p class="works-text">a-blog CMSからwordpressへの移管に際して各種ページの作成、ACF、お問い合わせフォームの実装を対応。(コーディング担当)
+                        </p>
+                        <div class="works-language">
+                            <p>HTML</p>
+                            <p>CSS</p>
+                            <p>Javascript</p>
+                            <p>PHP</p>
+                            <p>a-blog CMS</p>
+                            <p>wordpress</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://k-goal.net/experience/" target="_blank">
+                <div class="works" id="cording-top">
+                    <div class="works-date">2023.12</div>
+                    <div class="works-image"><img
+                            src="https://k-goal.net/wp-content/uploads/2023/10/%E3%82%A2%E3%82%BB%E3%83%83%E3%83%88-42@2x.webp">
+                    </div>
+                    <div class="works-sentence">
+                        <span class="works-title">Web page <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <p class="works-text">無料体験の広告ページ。ヘッダーバナーとアンケートの箇所はACFで自動投稿化。(コーディング担当)</p>
+                        <div class="works-language">
+                            <p>HTML</p>
+                            <p>CSS</p>
+                            <p>Javascript</p>
+                            <p>PHP</p>
+                            <p>wordpress</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://k-goal.net/standard-deviation-graph-kagawa" target="_blank">
+                <div class="works">
+                    <div class="works-date">2023.09</div>
+                    <div class="works-image"><img
+                            src="https://k-goal.net/wp-content/uploads/2023/09/header-kagawa.webp">
+                    </div>
+                    <div class="works-sentence">
+                        <p class="works-title">Web page <i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+                        <p class="works-text">香川県の高校を地域で分け、偏差値順に一覧表示させたページ。(デザイン/コーディング担当)</p>
+                        <div class="works-language">
+                            <p>HTML</p>
+                            <p>CSS</p>
+                            <p>Javascript</p>
+                            <p>PHP</p>
+                            <p>Photoshop</p>
+                            <p>wordpress</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://k-goal.net/teacher-introduction/" target="_blank">
+                <div class="works">
+                    <div class="works-date">2023.04</div>
+                    <div class="works-image"><img
+                            src="https://k-goal.net/wp-content/uploads/2023/08/teacher-header222.png">
+                    </div>
+                    <div class="works-sentence">
+                        <p class="works-title">Web page <i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+                        <p class="works-text">
+                            家庭教師の先生を紹介するページ。先生のプロフィールはACFでテンプレート化。mapタグを使用し、地図上の各県にリンクを設置。(コーディング担当)
+                        </p>
+                        <div class="works-language">
+                            <p>HTML</p>
+                            <p>CSS</p>
+                            <p>Javascript</p>
+                            <p>PHP</p>
+                            <p>wordpress</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.atmos-pink.com/lp/nike-air-jordan-11-retro-lp" target="_blank">
+                <div class="works">
+                    <div class="works-date">2022.12</div>
+                    <div class="works-image"><img
+                            src="https://assets.atmos-tokyo.com/assets/img/features/nike-air-jordan-11-retro-cherry/img1.jpg">
+                    </div>
+                    <div class="works-sentence">
+                        <p class="works-title">Web page <i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+                        <p class="works-text">スニーカーの抽選販売ページ。(デザイン/コーディング担当)</p>
+                        <div class="works-language">
+                            <p>HTML</p>
+                            <p>CSS</p>
+                            <p>Photoshop</p>
+                            <p>gf.E</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.atmos-pink.com/lp/by_color" target="_blank">
+                <div class="works">
+                    <div class="works-date">2022.12</div>
+                    <div class="works-image"><img
+                            src="https://assets.atmos-tokyo.com/assets/img/features/by_color/img-1_ver3.png"></div>
+                    <div class="works-sentence">
+                        <p class="works-title">Web page <i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+                        <p class="works-text">冬服のスタイリングページ。(デザイン/コーディング担当)</p>
+                        <div class="works-language">
+                            <p>HTML</p>
+                            <p>CSS</p>
+                            <p>Javascript</p>
+                            <p>Photoshop</p>
+                            <p>gf.E</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://online.ysroad.co.jp/shop/pages/road-bestbuy.aspx" target="_blank">
+                <div class="works">
+                    <div class="works-date">2021.12</div>
+                    <div class="works-image"><img
+                            src="https://online.ysroad.co.jp/img/lp/road-bestbuy/img_event-header_bestbuy_180.png">
+                    </div>
+                    <div class="works-sentence">
+                        <p class="works-title">Web page <i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+                        <p class="works-text">ロードバイクの販促ページ(デザイン/コーディング担当)</p>
+                        <div class="works-language">
+                            <p>HTML</p>
+                            <p>CSS</p>
+                            <p>Javascript</p>
+                            <p>Photoshop</p>
+                            <p>ecbeing</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="bnr_jtu.webp" class="luminous">
+                <div class="works" id="design-top">
+                    <div class="works-date">2022.07</div>
+                    <div class="works-image"><img src="bnr_jtu.webp"></div>
+                    <div class="works-sentence">
+                        <p class="works-title">Banner <i class="fa-regular fa-image"></i></p>
+                        <p class="works-text">トライアスロン連合の会員向けバナー</p>
+                        <div class="works-language">
+                            <p>Photoshop</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="bnr_kazze.webp" class="luminous">
+                <div class="works">
+                    <div class="works-date">2022.04</div>
+                    <div class="works-image"><img src="bnr_kazze.webp"></div>
+                    <div class="works-sentence">
+                        <p class="works-title">Banner <i class="fa-regular fa-image"></i></p>
+                        <p class="works-text">トライアスロン連合の会員向けバナー</p>
+                        <div class="works-language">
+                            <p>Photoshop</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="reception.webp" class="luminous">
+                <div class="works">
+                    <div class="works-date">2021.06</div>
+                    <div class="works-image"><img src="reception.webp"></div>
+                    <div class="works-sentence">
+                        <p class="works-title">Paper <i class="fa-regular fa-image"></i></p>
+                        <p class="works-text">ゲストハウスにおいてレンタルスペースを利用する方向けの記入用紙</p>
+                        <div class="works-language">
+                            <p>Photoshop</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="student.webp" class="luminous">
+                <div class="works">
+                    <div class="works-date">2021.04</div>
+                    <div class="works-image"><img src="student.webp"></div>
+                    <div class="works-sentence">
+                        <p class="works-title">Paper <i class="fa-regular fa-image"></i></p>
+                        <p class="works-text">ゲストハウスのパンフレット</p>
+                        <div class="works-language">
+                            <p>Photoshop</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/luminous-lightbox@2.4.0/dist/luminous.min.js"></script>
+    <script>new LuminousGallery(document.querySelectorAll('.luminous'));</script>
+    <script>
+        const hoverArea = document.getElementById('hover-area');
+
+document.addEventListener('mousemove', (event) => {
+  hoverArea.style.left = `${event.clientX}px`;
+  hoverArea.style.top = `${event.clientY}px`;
+});
+    </script>
+</body>
